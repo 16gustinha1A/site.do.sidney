@@ -87,35 +87,68 @@
             min-height: 380px;
         }
 
+        /* MOSTRADOR IGUAL AO DA FOTO DO PAPELÃO */
         .interactive-clock {
             width: 280px;
             height: 280px;
             border-radius: 50%;
             position: relative;
-            /* Azul (Manhã - Esquerda/Topo), Amarelo (Tarde - Direita), Vermelho (Noite - Base) */
-            background: conic-gradient(
-                #0055ff 270deg 360deg,
-                #0055ff 0deg 30deg,
-                #fbc02d 30deg 150deg,
-                #e53935 150deg 270deg
-            );
+            background: linear-gradient(to right, #0077ff 0%, #0077ff 33%, #ffcc00 33%, #ffcc00 66%, #e53935 66%, #e53935 100%);
             border: 12px solid #8d6e63;
             box-shadow: 0 0 25px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
-        .icon {
+        /* Sol Completo no lado Azul */
+        .sun-blue {
             position: absolute;
-            font-size: 2rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #d4e157;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(212, 225, 87, 0.8);
         }
-        
-        /* Ajuste das posições de acordo com o mostrador físico */
-        .icon-morning { top: 70px; left: 35px; }    /* Sol da Manhã (Azul) */
-        .icon-afternoon { top: 70px; right: 35px; } /* Sol da Tarde (Amarelo) */
-        .icon-night { bottom: 45px; }               /* Lua da Noite (Vermelho) */
+
+        /* Sol com 1/3 e Nuvem no meio (Setor Amarelo) */
+        .sun-cloud-center {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sun-top {
+            width: 45px;
+            height: 22px;
+            background-color: #ff6f00;
+            border-top-left-radius: 45px;
+            border-top-right-radius: 45px;
+        }
+
+        .cloud-white {
+            width: 60px;
+            height: 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            margin-top: -6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Lua Crescente C no lado Vermelho */
+        .moon-c {
+            position: absolute;
+            right: 25px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff9c4;
+            font-family: sans-serif;
+            transform: scaleX(0.9);
+            line-height: 1;
+        }
 
         .hand {
             width: 6px;
@@ -127,6 +160,7 @@
             border-radius: 4px;
             box-shadow: 0 0 10px rgba(0,0,0,0.8);
             transition: transform 0.5s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+            z-index: 10;
         }
 
         .center-circle {
@@ -136,6 +170,7 @@
             border-radius: 50%;
             position: absolute;
             box-shadow: 0 0 8px rgba(0,0,0,0.8);
+            z-index: 11;
         }
 
         .clock-status {
@@ -265,15 +300,24 @@
         <section class="video-card">
             <div class="clock-container">
                 <div class="interactive-clock">
-                    <span class="icon icon-morning" title="Manhã (Sol)">☀️</span>
-                    <span class="icon icon-afternoon" title="Tarde (Sol)">🌤️</span>
-                    <span class="icon icon-night" title="Noite (Lua)">🌙</span>
+                    <!-- Esquerda: Sol Amarelo no fundo Azul -->
+                    <div class="sun-blue" title="Sol"></div>
+                    
+                    <!-- Centro: 1/3 de Sol com Nuvem no fundo Amarelo -->
+                    <div class="sun-cloud-center" title="1/3 Sol com Nuvem">
+                        <div class="sun-top"></div>
+                        <div class="cloud-white"></div>
+                    </div>
+                    
+                    <!-- Direita: Lua C no fundo Vermelho -->
+                    <div class="moon-c" title="Lua em C">C</div>
+
                     <div class="hand" id="clock-hand"></div>
                     <div class="center-circle"></div>
                 </div>
                 <div class="clock-status" id="clock-status">Carregando horário...</div>
             </div>
-            <p class="video-caption" style="margin-top:1rem;">⚙️ Simulação interativa do mostrador circular alinhada com os símbolos do protótipo</p>
+            <p class="video-caption" style="margin-top:1rem;">⚙️ Simulação interativa idêntica ao mostrador em papelão da imagem</p>
         </section>
 
         <section class="step-card">
@@ -282,11 +326,11 @@
                 O Que Criamos e Qual o Objetivo?
             </div>
             <p>Criamos um <strong>Relógio Visual Intuitivo</strong> para auxiliar pessoas neurodivergentes (como indivíduos no Espectro Autista) a identificarem a passagem do tempo sem precisarem ler ponteiros ou números digitais.</p>
-            <p style="margin-top: 8px;">A iluminação muda automaticamente conforme o período do day:</p>
+            <p style="margin-top: 8px;">A iluminação muda automaticamente conforme o período do dia:</p>
             <ul style="margin-left: 1.5rem; margin-top: 8px;">
-                <li><strong>Azul (Manhã - Sol):</strong> Representa o início do dia e o sol nascendo.</li>
-                <li><strong>Amarelo (Tarde - Sol):</strong> Representa a luz do meio-dia.</li>
-                <li><strong>Vermelho (Noite - Lua):</strong> Sinaliza o período de descanso e fim de rotina.</li>
+                <li><strong>Azul (Manhã):</strong> Ilustrado com um sol amarelo.</li>
+                <li><strong>Amarelo (Tarde):</strong> Ilustrado com 1/3 de sol cobrindo uma nuvem branca.</li>
+                <li><strong>Vermelho (Noite):</strong> Ilustrado com uma lua crescente em formato de C.</li>
             </ul>
         </section>
 
@@ -383,11 +427,11 @@
 
             let period = "";
             if (hours >= 6 && hours < 14) {
-                period = "Período: Manhã (Sol / Setor Azul)";
+                period = "Período: Manhã (Faixa Azul / Sol)";
             } else if (hours >= 14 && hours < 22) {
-                period = "Período: Tarde (Sol / Setor Amarelo)";
+                period = "Período: Tarde (Faixa Amarela / Nuvem)";
             } else {
-                period = "Período: Noite (Lua / Setor Vermelho)";
+                period = "Período: Noite (Faixa Vermelha / Lua C)";
             }
 
             status.textContent = `${now.toLocaleTimeString('pt-BR')} — ${period}`;
