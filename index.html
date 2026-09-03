@@ -75,7 +75,6 @@
             text-align: center;
         }
 
-        /* SIMULAÇÃO DO RELÓGIO EM CSS/SVG */
         .clock-container {
             background-color: #050508;
             border-radius: 12px;
@@ -93,29 +92,31 @@
             height: 280px;
             border-radius: 50%;
             position: relative;
+            /* Azul (Manhã - Esquerda/Topo), Amarelo (Tarde - Direita), Vermelho (Noite - Base) */
             background: conic-gradient(
-                #0055ff 0deg 120deg,
-                #fbc02d 120deg 240deg,
-                #e53935 240deg 360deg
+                #0055ff 270deg 360deg,
+                #0055ff 0deg 30deg,
+                #fbc02d 30deg 150deg,
+                #e53935 150deg 270deg
             );
-            border: 12px solid #8d6e63; /* Borda cor de papelão */
+            border: 12px solid #8d6e63;
             box-shadow: 0 0 25px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* Ícones dentro dos setores */
         .icon {
             position: absolute;
-            font-size: 1.8rem;
+            font-size: 2rem;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
-        .icon-morning { top: 30px; left: 60px; }
-        .icon-afternoon { top: 120px; right: 35px; }
-        .icon-night { top: 120px; left: 35px; }
+        
+        /* Ajuste das posições de acordo com o mostrador físico */
+        .icon-morning { top: 70px; left: 35px; }    /* Sol da Manhã (Azul) */
+        .icon-afternoon { top: 70px; right: 35px; } /* Sol da Tarde (Amarelo) */
+        .icon-night { bottom: 45px; }               /* Lua da Noite (Vermelho) */
 
-        /* Ponteiro do relógio */
         .hand {
             width: 6px;
             height: 110px;
@@ -261,19 +262,18 @@
 
     <main class="container">
 
-        <!-- SIMULAÇÃO INTERATIVA DO RELÓGIO -->
         <section class="video-card">
             <div class="clock-container">
                 <div class="interactive-clock">
-                    <span class="icon icon-morning">☀️</span>
-                    <span class="icon icon-afternoon">🌤️</span>
-                    <span class="icon icon-night">🌙</span>
+                    <span class="icon icon-morning" title="Manhã (Sol)">☀️</span>
+                    <span class="icon icon-afternoon" title="Tarde (Sol)">🌤️</span>
+                    <span class="icon icon-night" title="Noite (Lua)">🌙</span>
                     <div class="hand" id="clock-hand"></div>
                     <div class="center-circle"></div>
                 </div>
                 <div class="clock-status" id="clock-status">Carregando horário...</div>
             </div>
-            <p class="video-caption" style="margin-top:1rem;">⚙️ Simulação interativa do mostrador circular em tempo real</p>
+            <p class="video-caption" style="margin-top:1rem;">⚙️ Simulação interativa do mostrador circular alinhada com os símbolos do protótipo</p>
         </section>
 
         <section class="step-card">
@@ -282,11 +282,11 @@
                 O Que Criamos e Qual o Objetivo?
             </div>
             <p>Criamos um <strong>Relógio Visual Intuitivo</strong> para auxiliar pessoas neurodivergentes (como indivíduos no Espectro Autista) a identificarem a passagem do tempo sem precisarem ler ponteiros ou números digitais.</p>
-            <p style="margin-top: 8px;">A iluminação muda automaticamente conforme o período do dia:</p>
+            <p style="margin-top: 8px;">A iluminação muda automaticamente conforme o período do day:</p>
             <ul style="margin-left: 1.5rem; margin-top: 8px;">
-                <li><strong>Azul (Manhã):</strong> Representa o início do dia e o sol nascendo.</li>
-                <li><strong>Amarelo (Tarde):</strong> Representa a luz do meio-dia.</li>
-                <li><strong>Vermelho (Noite):</strong> Sinaliza o período de descanso e fim de rotina.</li>
+                <li><strong>Azul (Manhã - Sol):</strong> Representa o início do dia e o sol nascendo.</li>
+                <li><strong>Amarelo (Tarde - Sol):</strong> Representa a luz do meio-dia.</li>
+                <li><strong>Vermelho (Noite - Lua):</strong> Sinaliza o período de descanso e fim de rotina.</li>
             </ul>
         </section>
 
@@ -373,7 +373,6 @@
             const minutes = now.getMinutes();
             const seconds = now.getSeconds();
 
-            // Calcula o ângulo do ponteiro com base em um dia de 24 horas
             const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
             const degrees = (totalSeconds / 86400) * 360;
 
@@ -384,11 +383,11 @@
 
             let period = "";
             if (hours >= 6 && hours < 14) {
-                period = "Período: Manhã (Setor Azul)";
+                period = "Período: Manhã (Sol / Setor Azul)";
             } else if (hours >= 14 && hours < 22) {
-                period = "Período: Tarde (Setor Amarelo)";
+                period = "Período: Tarde (Sol / Setor Amarelo)";
             } else {
-                period = "Período: Noite (Setor Vermelho)";
+                period = "Período: Noite (Lua / Setor Vermelho)";
             }
 
             status.textContent = `${now.toLocaleTimeString('pt-BR')} — ${period}`;
