@@ -220,8 +220,8 @@
 
         <section class="video-card">
             <div class="video-frame">
-                <!-- Apontado diretamente para .jpeg -->
-                <img id="foto-projeto" src="projeto.jpeg" alt="Protótipo do Relógio Visual em Papelão">
+                <!-- Apontado diretamente para o nome exato da imagem enviada -->
+                <img id="foto-projeto" src="unnamed_3.jpg" alt="Protótipo do Relógio Visual em Papelão">
             </div>
             <p class="video-caption">📷 Mostrador físico em papelão pintado com as três fases do dia (Manhã, Tarde e Noite)</p>
         </section>
@@ -318,15 +318,21 @@
 
     <script>
         const imgElement = document.getElementById('foto-projeto');
-        const formatos = ['projeto.jpeg', 'unnamed (3).jpeg', 'projeto.jpg', 'projeto.png', 'unnamed (3).jpg'];
+        const formatos = [
+            'unnamed_3.jpg',
+            'unnamed (3).jpg',
+            'unnamed_3.jpeg',
+            'unnamed_3.png',
+            'projeto.jpeg',
+            'projeto.jpg',
+            'projeto.png'
+        ];
         let indice = 0;
 
         imgElement.onerror = function() {
             indice++;
             if (indice < formatos.length) {
                 imgElement.src = formatos[indice];
-            } else {
-                imgElement.alt = "Imagem do protótipo não encontrada. Verifique se o arquivo está na mesma pasta.";
             }
         };
     </script>
