@@ -23,7 +23,6 @@
             padding-bottom: 3rem;
         }
 
-        /* Banner estilo topo de canal / Player */
         .yt-header {
             background: linear-gradient(135deg, #0055ff 0%, #fbc02d 50%, #e53935 100%);
             padding: 3.5rem 1.5rem;
@@ -58,7 +57,6 @@
             opacity: 0.95;
         }
 
-        /* Container Principal */
         .container {
             max-width: 900px;
             margin: -2rem auto 0 auto;
@@ -67,7 +65,6 @@
             z-index: 10;
         }
 
-        /* Moldura estilo Player de Vídeo para a Imagem */
         .video-card {
             background: #181920;
             border-radius: 16px;
@@ -104,7 +101,6 @@
             font-weight: 600;
         }
 
-        /* Seções de Passo a Passo */
         .step-card {
             background: #181920;
             border-radius: 16px;
@@ -162,7 +158,6 @@
             color: #38bdf8;
         }
 
-        /* Tabela de Transições de Cores */
         .color-table {
             width: 100%;
             border-collapse: collapse;
@@ -215,7 +210,6 @@
 </head>
 <body>
 
-    <!-- BANNER TOPO -->
     <header class="yt-header">
         <span class="badge-yt">PROJETO PASSO A PASSO</span>
         <h1>Relógio Visual por Cores (Arduino)</h1>
@@ -224,20 +218,18 @@
 
     <main class="container">
 
-        <!-- PLAYER / MOSTRADOR DO PROJETO -->
         <section class="video-card">
             <div class="video-frame">
-                <!-- O JavaScript testa automaticamente todas as extensões de foto -->
-                <img id="foto-projeto" src="projeto.jpg" alt="Protótipo do Relógio Visual em Papelão">
+                <!-- Apontado diretamente para .jpeg -->
+                <img id="foto-projeto" src="projeto.jpeg" alt="Protótipo do Relógio Visual em Papelão">
             </div>
             <p class="video-caption">📷 Mostrador físico em papelão pintado com as três fases do dia (Manhã, Tarde e Noite)</p>
         </section>
 
-        <!-- PASSO 1: O QUE CRIAMOS -->
         <section class="step-card">
             <div class="step-title">
                 <span class="step-number">1</span>
-                 O Que Criamos e Qual o Objetivo?
+                O Que Criamos e Qual o Objetivo?
             </div>
             <p>Criamos um <strong>Relógio Visual Intuitivo</strong> para auxiliar pessoas neurodivergentes (como indivíduos no Espectro Autista) a identificarem a passagem do tempo sem precisarem ler ponteiros ou números digitais.</p>
             <p style="margin-top: 8px;">A iluminação muda automaticamente conforme o período do dia:</p>
@@ -248,11 +240,10 @@
             </ul>
         </section>
 
-        <!-- PASSO 2: MATERIAIS UTILIZADOS -->
         <section class="step-card step-2">
             <div class="step-title">
                 <span class="step-number">2</span>
-                 Materiais Utilizados no Projeto
+                Materiais Utilizados no Projeto
             </div>
             <p>Para construir a estrutura física e a parte eletrônica, usamos os seguintes componentes:</p>
             
@@ -266,11 +257,10 @@
             </div>
         </section>
 
-        <!-- PASSO 3: MONTAGEM DO CIRCUITO -->
         <section class="step-card step-3">
             <div class="step-title">
                 <span class="step-number">3</span>
-                 Como Montamos o Circuito (Esquema)
+                Como Montamos o Circuito (Esquema)
             </div>
             <ol style="margin-left: 1.5rem;">
                 <li>Ligamos a perna mais longa do LED RGB (Catodo) no pino <code>GND</code> do Arduino.</li>
@@ -285,11 +275,10 @@
             </ol>
         </section>
 
-        <!-- PASSO 4: CÓDIGO E TRANSIÇÃO -->
         <section class="step-card step-4">
             <div class="step-title">
                 <span class="step-number">4</span>
-                 Lógica do Código e Transições
+                Lógica do Código e Transições
             </div>
             <p>O código do Arduino utiliza a função não-bloqueante <code>millis()</code> para medir a passagem do tempo sem pausar o programa. O ciclo muda de cor de forma contínua:</p>
 
@@ -327,11 +316,9 @@
         <p>Projeto Escolar de Robótica e Acessibilidade — Desenvolvido com Arduino Uno</p>
     </footer>
 
-    <!-- SCRIPT INTELIGENTE DE DETECÇÃO DE IMAGEM -->
     <script>
-        // Tenta carregar a imagem em múltiplos nomes e formatos automaticamente
         const imgElement = document.getElementById('foto-projeto');
-        const formatos = ['projeto.jpg', 'projeto.png', 'unnamed (3).jpg', 'projeto.jpeg', 'PROJETO.JPG', 'projeto.PNG'];
+        const formatos = ['projeto.jpeg', 'unnamed (3).jpeg', 'projeto.jpg', 'projeto.png', 'unnamed (3).jpg'];
         let indice = 0;
 
         imgElement.onerror = function() {
@@ -339,7 +326,7 @@
             if (indice < formatos.length) {
                 imgElement.src = formatos[indice];
             } else {
-                imgElement.alt = "Imagem do protótipo não encontrada na pasta local.";
+                imgElement.alt = "Imagem do protótipo não encontrada. Verifique se o arquivo está na mesma pasta.";
             }
         };
     </script>
