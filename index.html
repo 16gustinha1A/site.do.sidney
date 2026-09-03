@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Visual por Cores - Acessibilidade</title>
+    <style>
+        /* ESTILOS GERAIS (CSS) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0055ff, #fbc02d, #e53935);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 6px solid #0055ff;
+        }
+
+        .card h2 {
+            color: #0055ff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Foto do Projeto */
+        .foto-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .foto-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 4px solid #fff;
+        }
+
+        .foto-container p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Listas e Tabelas */
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tabela-cores {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .tabela-cores th, .tabela-cores td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tabela-cores th {
+            background-color: #f8f9fa;
+        }
+
+        .cor-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .cor-azul { background-color: #0055ff; }
+        .cor-amarela { background-color: #fbc02d; }
+        .cor-vermelha { background-color: #e53935; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+            margin-top: 3rem;
+        }
+
+        /* Destaques de código */
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Relógio Visual por Cores</h1>
+        <p>Protótipo de acessibilidade e rotina diária usando Arduino Uno</p>
+    </header>
+
+    <div class="container">
+
+        <section class="card">
+            <h2>1. O Problema e a Solução</h2>
+            <p>O projeto foi desenvolvido para auxiliar pessoas neurodivergentes (como indivíduos no Espectro Autista) ou com dificuldades de percepção temporal na orientação de suas rotinas diárias.</p>
+            <p>Por meio de sinalização luminosa por cores intuitivas, o protótipo permite identificar o período do dia (Manhã, Tarde ou Noite) de forma visual, sem a necessidade de interpretação de números ou relógios convencionais.</p>
+            
+            <div class="foto-container">
+                <img src="projeto.jpg" alt="Protótipo do Relógio Visual por Cores em Papelão">
+                <p>Protótipo físico do mostrador construído para o projeto.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>2. Lista de Materiais</h2>
+            <ul>
+                <li><strong>1x</strong> Placa Arduino Uno R3 (com cabo USB)</li>
+                <li><strong>1x</strong> LED RGB (Catodo Comum)</li>
+                <li><strong>3x</strong> Resistores de 220 Ohms</li>
+                <li><strong>1x</strong> Protoboard (matriz de contatos)</li>
+                <li>Jumpers Macho-Macho para conexões</li>
+                <li>Estrutura física do mostrador (Papelão e Tintas)</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>3. Esquema de Montagem</h2>
+            <ol>
+                <li>Conectar o pino <code>GND</code> do Arduino à linha negativa da protoboard.</li>
+                <li>Encaixar o LED RGB na protoboard e conectar a perna mais longa (Catodo) no <code>GND</code>.</li>
+                <li>Colocar um resistor de 220 Ohms em cada perna de cor do LED.</li>
+                <li>Ligar os resistores nos pinos digitais PWM do Arduino:
+                    <ul>
+                        <li>Vermelho &rightarrow; Pino 9</li>
+                        <li>Verde &rightarrow; Pino 10</li>
+                        <li>Azul &rightarrow; Pino 11</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section class="card">
+            <h2>4. Lógica do Código (Ciclos de Tempo)</h2>
+            <p>O projeto não utiliza um módulo de relógio de tempo real (RTC) nem botões manuais. A passagem do tempo é simulada através do próprio código usando a função não-bloqueante <code>millis()</code>.</p>
+            <p>A placa conta o tempo continuamente e, ao atingir o intervalo programado, alterna de forma automática para a próxima fase do dia em um loop perpétuo.</p>
+        </section>
+
+        <section class="card">
+            <h2>5. Transição Visual por Cores</h2>
+            <p>Cada período do dia é representado por uma combinação específica de luz do LED RGB:</p>
+            
+            <table class="tabela-cores">
+                <thead>
+                    <tr>
+                        <th>Período</th>
+                        <th>Cor do LED</th>
+                        <th>Valores RGB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Manhã</strong></td>
+                        <td><span class="cor-box cor-azul"></span>Azul</td>
+                        <td>R: 0 | G: 0 | B: 255</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tarde</strong></td>
+                        <td><span class="cor-box cor-amarela"></span>Amarelo</td>
+                        <td>R: 255 | G: 255 | B: 0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Noite</strong></td>
+                        <td><span class="cor-box cor-vermelha"></span>Vermelho</td>
+                        <td>R: 255 | G: 0 | B: 0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>6. Conclusão e Impacto</h2>
+            <p>Este protótipo demonstra como a tecnologia simples e o uso da plataforma Arduino podem gerar soluções de baixo custo e com grande impacto social na área da acessibilidade.</p>
+            <p>Ao transformar dados temporais em estímulos visuais diretos, promovemos maior autonomia e organização pessoal no cotidiano de quem precisa desse suporte visual.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Projeto Escolar de Robótica e Acessibilidade — Desenvolvido com Arduino Uno</p>
+    </footer>
+
+</body>
+</html>
