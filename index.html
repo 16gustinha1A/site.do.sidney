@@ -220,8 +220,8 @@
 
         <section class="video-card">
             <div class="video-frame">
-                <!-- Apontado diretamente para o nome exato da imagem enviada -->
-                <img id="foto-projeto" src="unnamed_3.jpg" alt="Protótipo do Relógio Visual em Papelão">
+                <!-- Link direto do Imgur inserido aqui -->
+                <img src="https://i.imgur.com/Fib10zj.jpeg" alt="Protótipo do Relógio Visual em Papelão">
             </div>
             <p class="video-caption">📷 Mostrador físico em papelão pintado com as três fases do dia (Manhã, Tarde e Noite)</p>
         </section>
@@ -316,25 +316,5 @@
         <p>Projeto Escolar de Robótica e Acessibilidade — Desenvolvido com Arduino Uno</p>
     </footer>
 
-    <script>
-        const imgElement = document.getElementById('foto-projeto');
-        const formatos = [
-            'unnamed_3.jpg',
-            'unnamed (3).jpg',
-            'unnamed_3.jpeg',
-            'unnamed_3.png',
-            'projeto.jpeg',
-            'projeto.jpg',
-            'projeto.png'
-        ];
-        let indice = 0;
-
-        imgElement.onerror = function() {
-            indice++;
-            if (indice < formatos.length) {
-                imgElement.src = formatos[indice];
-            }
-        };
-    </script>
 </body>
 </html>
