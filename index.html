@@ -75,30 +75,73 @@
             text-align: center;
         }
 
-        .video-frame {
+        /* SIMULAÇÃO DO RELÓGIO EM CSS/SVG */
+        .clock-container {
             background-color: #050508;
             border-radius: 12px;
-            padding: 10px;
+            padding: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             border: 1px solid #3b3e54;
-            min-height: 300px;
+            min-height: 380px;
         }
 
-        .video-frame img {
-            max-width: 100%;
-            max-height: 480px;
-            border-radius: 8px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            object-fit: contain;
+        .interactive-clock {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            position: relative;
+            background: conic-gradient(
+                #0055ff 0deg 120deg,
+                #fbc02d 120deg 240deg,
+                #e53935 240deg 360deg
+            );
+            border: 12px solid #8d6e63; /* Borda cor de papelão */
+            box-shadow: 0 0 25px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .video-caption {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            color: #94a3b8;
-            font-weight: 600;
+        /* Ícones dentro dos setores */
+        .icon {
+            position: absolute;
+            font-size: 1.8rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+        }
+        .icon-morning { top: 30px; left: 60px; }
+        .icon-afternoon { top: 120px; right: 35px; }
+        .icon-night { top: 120px; left: 35px; }
+
+        /* Ponteiro do relógio */
+        .hand {
+            width: 6px;
+            height: 110px;
+            background-color: #ffffff;
+            position: absolute;
+            bottom: 50%;
+            transform-origin: bottom center;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            transition: transform 0.5s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+        }
+
+        .center-circle {
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 8px rgba(0,0,0,0.8);
+        }
+
+        .clock-status {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #38bdf8;
         }
 
         .step-card {
@@ -218,12 +261,19 @@
 
     <main class="container">
 
+        <!-- SIMULAÇÃO INTERATIVA DO RELÓGIO -->
         <section class="video-card">
-            <div class="video-frame">
-                <!-- Link direto do Imgur inserido aqui -->
-                <img src="https://i.imgur.com/Fib10zj.jpeg" alt="Protótipo do Relógio Visual em Papelão">
+            <div class="clock-container">
+                <div class="interactive-clock">
+                    <span class="icon icon-morning">☀️</span>
+                    <span class="icon icon-afternoon">🌤️</span>
+                    <span class="icon icon-night">🌙</span>
+                    <div class="hand" id="clock-hand"></div>
+                    <div class="center-circle"></div>
+                </div>
+                <div class="clock-status" id="clock-status">Carregando horário...</div>
             </div>
-            <p class="video-caption">📷 Mostrador físico em papelão pintado com as três fases do dia (Manhã, Tarde e Noite)</p>
+            <p class="video-caption" style="margin-top:1rem;">⚙️ Simulação interativa do mostrador circular em tempo real</p>
         </section>
 
         <section class="step-card">
@@ -316,5 +366,36 @@
         <p>Projeto Escolar de Robótica e Acessibilidade — Desenvolvido com Arduino Uno</p>
     </footer>
 
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            // Calcula o ângulo do ponteiro com base em um dia de 24 horas
+            const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+            const degrees = (totalSeconds / 86400) * 360;
+
+            const hand = document.getElementById('clock-hand');
+            const status = document.getElementById('clock-status');
+
+            hand.style.transform = `rotate(${degrees}deg)`;
+
+            let period = "";
+            if (hours >= 6 && hours < 14) {
+                period = "Período: Manhã (Setor Azul)";
+            } else if (hours >= 14 && hours < 22) {
+                period = "Período: Tarde (Setor Amarelo)";
+            } else {
+                period = "Período: Noite (Setor Vermelho)";
+            }
+
+            status.textContent = `${now.toLocaleTimeString('pt-BR')} — ${period}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
 </html>
