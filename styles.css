@@ -1,0 +1,183 @@
+/* =============================================================================
+   ESTILOS GERAIS (styles.css)
+   Projeto: Relógio Visual por Cores (Acessibilidade)
+   ============================================================================= */
+
+/* Reset simples e tipografia */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Cabeçalho principal com gradiente em destaque */
+header {
+    background: linear-gradient(135deg, #1e88e5, #fbc02d, #e53935);
+    color: #ffffff;
+    text-align: center;
+    padding: 3.5rem 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    opacity: 0.95;
+}
+
+/* Container principal de conteúdo */
+.container {
+    max-width: 850px;
+    margin: -2rem auto 3rem auto;
+    padding: 0 1.2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Cards das Seções */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-top: 5px solid #1e88e5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: #1565c0;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+}
+
+.card p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: #4a5568;
+}
+
+/* Estilização da Foto do Projeto */
+.foto-container {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8fafc;
+    border-radius: 10px;
+    border: 1px dashed #cbd5e1;
+}
+
+.foto-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 420px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.foto-container p {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-top: 0.8rem;
+    font-style: italic;
+}
+
+/* Listas */
+ul, ol {
+    margin-left: 1.8rem;
+    margin-bottom: 1rem;
+    color: #4a5568;
+}
+
+li {
+    margin-bottom: 0.6rem;
+    font-size: 1.05rem;
+}
+
+/* Tabela de Cores */
+.tabela-cores {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tabela-cores th, 
+.tabela-cores td {
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.tabela-cores th {
+    background-color: #0f172a;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.tabela-cores td {
+    border-bottom: 1px solid #e2e8f0;
+    background-color: #ffffff;
+}
+
+.tabela-cores tr:last-child td {
+    border-bottom: none;
+}
+
+/* Bolinhas indicadoras de cor */
+.cor-box {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.cor-azul { background-color: #1e88e5; }
+.cor-amarela { background-color: #fbc02d; }
+.cor-vermelha { background-color: #e53935; }
+
+/* Blocos de código destacados */
+code {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.95rem;
+    border: 1px solid #e2e8f0;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #0f172a;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-top: 4rem;
+}
