@@ -4,109 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relógio Visual por Cores - Acessibilidade</title>
+    <!-- Importação de fonte moderna do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- SEÇÃO 1: CABEÇALHO / TÍTULO -->
-    <header>
-        <h1>Relógio Visual por Cores</h1>
-        <p>Protótipo de acessibilidade e rotina diária usando Arduino Uno</p>
+    <!-- CABEÇALHO -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">Projeto de Acessibilidade</span>
+            <h1>Relógio Visual por Cores</h1>
+            <p>Protótipo de orientação temporal e rotina diária com Arduino Uno</p>
+        </div>
     </header>
 
-    <div class="container">
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
 
-        <!-- SEÇÃO 2: O PROBLEMA E A SOLUÇÃO -->
+        <!-- 1. O PROBLEMA E A SOLUÇÃO -->
         <section class="card">
-            <h2>1. O Problema e a Solução</h2>
-            <p>O projeto foi desenvolvido para auxiliar pessoas neurodivergentes (como indivíduos no Espectro Autista) ou com dificuldades de percepção temporal na orientação de suas rotinas diárias.</p>
-            <p>Por meio de sinalização luminosa por cores intuitivas, o protótipo permite identificar o período do dia (Manhã, Tarde ou Noite) de forma visual, sem a necessidade de interpretação de números ou relógios convencionais.</p>
-            
-            <div class="foto-container">
-                <img src="projeto.jpg" alt="Protótipo do Relógio Visual por Cores em Papelão">
-                <p>Protótipo físico do mostrador construído para o projeto.</p>
+            <div class="card-header">
+                <h2>1. O Problema e a Solução</h2>
+            </div>
+            <div class="card-body">
+                <p>O projeto foi desenvolvido para auxiliar pessoas neurodivergentes (como indivíduos no Espectro Autista) ou com dificuldades de percepção temporal na orientação de suas rotinas diárias.</p>
+                <p>Por meio de sinalização luminosa por cores intuitivas, o protótipo permite identificar o período do dia (Manhã, Tarde ou Noite) de forma visual, sem a necessidade de interpretação de números ou relógios convencionais.</p>
+                
+                <div class="foto-container">
+                    <img src="projeto.jpg" alt="Protótipo do Relógio Visual por Cores em Papelão">
+                    <span class="legend">Protótipo físico do mostrador construído para o projeto</span>
+                </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 3: MATERIAIS UTILIZADOS -->
+        <!-- 2. MATERIAIS UTILIZADOS -->
         <section class="card">
-            <h2>2. Lista de Materiais</h2>
-            <ul>
-                <li><strong>1x</strong> Placa Arduino Uno R3 (com cabo USB)</li>
-                <li><strong>1x</strong> LED RGB (Catodo Comum)</li>
-                <li><strong>3x</strong> Resistores de 220 Ohms</li>
-                <li><strong>1x</strong> Protoboard (matriz de contatos)</li>
-                <li>Jumpers Macho-Macho para conexões</li>
-                <li>Estrutura física do mostrador (Papelão e Tintas)</li>
-            </ul>
+            <div class="card-header">
+                <h2>2. Lista de Materiais</h2>
+            </div>
+            <div class="card-body">
+                <ul class="lista-materiais">
+                    <li><strong>1x</strong> Placa Arduino Uno R3 (com cabo USB)</li>
+                    <li><strong>1x</strong> LED RGB (Catodo Comum)</li>
+                    <li><strong>3x</strong> Resistores de 220 Ohms</li>
+                    <li><strong>1x</strong> Protoboard (matriz de contatos)</li>
+                    <li>Jumpers Macho-Macho para conexões</li>
+                    <li>Estrutura física do mostrador (Papelão e Tintas)</li>
+                </ul>
+            </div>
         </section>
 
-        <!-- SEÇÃO 4: ESQUEMA DE MONTAGEM -->
+        <!-- 3. ESQUEMA DE MONTAGEM -->
         <section class="card">
-            <h2>3. Esquema de Montagem</h2>
-            <ol>
-                <li>Conectar o pino <code>GND</code> do Arduino à linha negativa da protoboard.</li>
-                <li>Encaixar o LED RGB na protoboard e conectar a perna mais longa (Catodo) no <code>GND</code>.</li>
-                <li>Colocar um resistor de 220 Ohms em cada perna de cor do LED.</li>
-                <li>Ligar os resistores nos pinos digitais PWM do Arduino:
-                    <ul>
-                        <li>Vermelho &rightarrow; Pino 9</li>
-                        <li>Verde &rightarrow; Pino 10</li>
-                        <li>Azul &rightarrow; Pino 11</li>
-                    </ul>
-                </li>
-            </ol>
+            <div class="card-header">
+                <h2>3. Esquema de Montagem</h2>
+            </div>
+            <div class="card-body">
+                <ol class="passos-montagem">
+                    <li>Conectar o pino <code>GND</code> do Arduino à linha negativa da protoboard.</li>
+                    <li>Encaixar o LED RGB na protoboard e conectar a perna mais longa (Catodo) no <code>GND</code>.</li>
+                    <li>Colocar um resistor de 220 Ohms em cada perna de cor do LED.</li>
+                    <li>Ligar os resistores nos pinos digitais PWM do Arduino:
+                        <ul>
+                            <li>Vermelho &rightarrow; <strong>Pino 9</strong></li>
+                            <li>Verde &rightarrow; <strong>Pino 10</strong></li>
+                            <li>Azul &rightarrow; <strong>Pino 11</strong></li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
         </section>
 
-        <!-- SEÇÃO 5: LÓGICA DO CÓDIGO -->
+        <!-- 4. LÓGICA DO CÓDIGO -->
         <section class="card">
-            <h2>4. Lógica do Código (Ciclos de Tempo)</h2>
-            <p>O projeto não utiliza um módulo de relógio de tempo real (RTC) nem botões manuais. A passagem do tempo é simulada através do próprio código usando a função não-bloqueante <code>millis()</code>.</p>
-            <p>A placa conta o tempo continuamente e, ao atingir o intervalo programado, alterna de forma automática para a próxima fase do dia em um loop perpétuo.</p>
+            <div class="card-header">
+                <h2>4. Lógica do Código (Ciclos de Tempo)</h2>
+            </div>
+            <div class="card-body">
+                <p>O projeto não utiliza um módulo de relógio de tempo real (RTC) nem botões manuais. A passagem do tempo é simulada através do próprio código usando a função não-bloqueante <code>millis()</code>.</p>
+                <p>A placa conta o tempo continuamente e, ao atingir o intervalo programado, alterna de forma automática para a próxima fase do dia em um loop perpétuo.</p>
+            </div>
         </section>
 
-        <!-- SEÇÃO 6: AS CORES DO DIA -->
+        <!-- 5. AS CORES DO DIA -->
         <section class="card">
-            <h2>5. Transição Visual por Cores</h2>
-            <p>Cada período do dia é representado por uma combinação específica de luz do LED RGB:</p>
-            
-            <table class="tabela-cores">
-                <thead>
-                    <tr>
-                        <th>Período</th>
-                        <th>Cor do LED</th>
-                        <th>Valores RGB</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Manhã</strong></td>
-                        <td><span class="cor-box cor-azul"></span>Azul</td>
-                        <td>R: 0 | G: 0 | B: 255</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tarde</strong></td>
-                        <td><span class="cor-box cor-amarela"></span>Amarelo</td>
-                        <td>R: 255 | G: 255 | B: 0</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Noite</strong></td>
-                        <td><span class="cor-box cor-vermelha"></span>Vermelho</td>
-                        <td>R: 255 | G: 0 | B: 0</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card-header">
+                <h2>5. Transição Visual por Cores</h2>
+            </div>
+            <div class="card-body">
+                <p>Cada período do dia é representado por uma combinação específica de luz do LED RGB:</p>
+                
+                <div class="table-wrapper">
+                    <table class="tabela-cores">
+                        <thead>
+                            <tr>
+                                <th>Período</th>
+                                <th>Cor do LED</th>
+                                <th>Valores RGB</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Manhã</strong></td>
+                                <td><span class="cor-pill cor-azul">Azul</span></td>
+                                <td><code>R: 0 | G: 0 | B: 255</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tarde</strong></td>
+                                <td><span class="cor-pill cor-amarela">Amarelo</span></td>
+                                <td><code>R: 255 | G: 255 | B: 0</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Noite</strong></td>
+                                <td><span class="cor-pill cor-vermelha">Vermelho</span></td>
+                                <td><code>R: 255 | G: 0 | B: 0</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
 
-        <!-- SEÇÃO 7: CONCLUSÃO E IMPACTO -->
+        <!-- 6. CONCLUSÃO E IMPACTO -->
         <section class="card">
-            <h2>6. Conclusão e Impacto</h2>
-            <p>Este protótipo demonstra como a tecnologia simples e o uso da plataforma Arduino podem gerar soluções de baixo custo e com grande impacto social na área da acessibilidade.</p>
-            <p>Ao transformar dados temporais em estímulos visuais diretos, promovemos maior autonomia e organização pessoal no cotidiano de quem precisa desse suporte visual.</p>
+            <div class="card-header">
+                <h2>6. Conclusão e Impacto</h2>
+            </div>
+            <div class="card-body">
+                <p>Este protótipo demonstra como a tecnologia simples e o uso da plataforma Arduino podem gerar soluções de baixo custo e com grande impacto social na área da acessibilidade.</p>
+                <p>Ao transformar dados temporais em estímulos visuais diretos, promovemos maior autonomia e organização pessoal no cotidiano de quem precisa desse suporte visual.</p>
+            </div>
         </section>
 
-    </div>
+    </main>
 
+    <!-- RODAPÉ -->
     <footer>
         <p>Projeto Escolar de Robótica e Acessibilidade — Desenvolvido com Arduino Uno</p>
     </footer>
